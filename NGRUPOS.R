@@ -11,6 +11,8 @@ ngrupos <- dbGetQuery(con2,"SELECT  N.PROCODIGO,GRCODIGO FROM NGRUPOS N
 
 dbGetQuery(con2,"SELECT * FROM GRUPOROTULOS") %>% View()
 
+dbGetQuery(con2,"SELECT * FROM NGRUPOS") %>% View()
+
 
 NGRUPOS_MARCA_CLIENTE %>% rename(PROCODIGO=PRODUTO_CODIGO)
 
@@ -22,4 +24,13 @@ ngrupos %>% filter(GRCODIGO==162) %>%
   mutate(PROCODIGO=trimws(PROCODIGO)) %>% nrow()
 
 write.xlsx2(NGRUPOS_MARCA_CLIENTE2,file = "C:/Users/Repro/Documents/R/ADM/PRODUTOS/BASES/NGRUPOS_MARCA_CLIENTE2.xlsx")
+
+
+## CREATE NGRUPOS
+
+
+query10 <- paste("INSERT INTO GRUPOROTULOS (GRCODIGO,GRNOME) VALUES(181,'TABELA DE PRECOS') ")
+dbSendQuery(con3,query10)
+
+
 
